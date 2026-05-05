@@ -1,0 +1,25 @@
+﻿﻿@model Project
+<div>
+    <h1 class="text-primary"> Update Project</h1>
+    <form asp-action="Update" asp-controller="Project" method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input asp-for="@Model.Title " type="text" class="form-control" id="title" placeholder="Add Title...">
+            <span class="text-danger" asp-validation-for=" @Model.Title "></span>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input asp-for="@Model.Category" type="text" class="form-control" id="category" placeholder="Add Category...">
+            <span class="text-danger" asp-validation-for="@Model.Category"></span>
+        </div>
+  
+        <div class="mb-3">
+            <label for="imgurl" class="form-label">Image URL</label>
+
+            <input asp-for="@Model.Image" type="text" class="form-control" id="img">
+            <span class="text-danger" asp-validation-for="@Model.Image"></span>
+        </div>
+   
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div> 

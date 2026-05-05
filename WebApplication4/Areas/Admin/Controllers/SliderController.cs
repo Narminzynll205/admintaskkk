@@ -60,6 +60,34 @@ namespace WebApplication4.Areas.Admin.Controllers
             slider.IsDeleted = false;
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
+
+
+
+              public IActionResult Update(int id)
+        {
+            Project Project = _context.Projects.Find(id);
+
+            return View(Project);
         }
+        [HttpPost]
+        public IActionResult Update(Project project)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(project);
+            }
+
+            Project oldProject = _context.Projects.Find(project.Id);
+            oldProject.Title = project.Title;
+            oldProject.Category = project.Category;
+            oldProject.Image = project.Image;
+
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+     
+        }
+
+
     }
 }

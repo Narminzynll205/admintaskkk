@@ -1,0 +1,43 @@
+﻿﻿@model List<Project>
+<div>
+    <a asp-controller="Project" asp-action="Create" class="btn btn-primary">Add Project</a>
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Project project in Model)
+            {
+                <th scope="row">@project.Id</th>
+                <td>@project.Title</td>
+                <td>@project.Category</td>
+                <td>
+                    <img width="80px" height="80px" src="~/assets/images/@project.Image" alt="@project.Title" />
+                </td>
+                }
+                <td>
+                    <a asp-controller="Project" asp-action="Update" asp-route-id="@project.Id" class="btn btn-warning">UpDate</a>
+                </td>
+                <td>
+                    @{
+                        if (project.isDeleted == false)
+                        {
+                            <form asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" method="post">
+                              <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-controller="Project" asp-action="Restore" asp-route-id="@project.Id" method="post">
+                                <button type="submit" class="btn btn-success">Restore</button>
+                            </form>
+                        </td>
+                   }
+                </tbody>
+            </table>
+        </div>
